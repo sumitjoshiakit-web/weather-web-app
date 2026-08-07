@@ -1,0 +1,386 @@
+/* ===== DARK THEME ===== */
+body.dark-theme {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-card: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --border-color: #4a5568;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.5);
+    --nav-bg: rgba(26, 32, 44, 0.88);
+    --footer-bg: #1a202c;
+    --footer-text: #a0aec0;
+    --skeleton-bg: #4a5568;
+    --weather-card-bg: #2d3748;
+    --forecast-bg: #2d3748;
+    --detail-bg: #1a202c;
+}
+
+body.dark-theme .nav-logo span {
+    background: linear-gradient(135deg, #9f7aea, #ed64a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-theme .search-wrapper {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+body.dark-theme .detail-item {
+    background: var(--bg-primary);
+}
+
+body.dark-theme .geo-btn {
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+body.dark-theme .search-error {
+    background: #2d3748;
+    border-color: #e53e3e;
+    color: #fc8181;
+}
+
+/* ================================================================ */
+/* ===== WEATHER THEMES - Stateful CSS Animations ===== */
+/* ================================================================ */
+
+/* ===== CLEAR SKY ===== */
+body.weather-clear {
+    --bg-primary: #ebf8ff;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --weather-card-bg: #ffffff;
+    --forecast-bg: #ffffff;
+    --detail-bg: #e6f4ff;
+    --border-color: #bee3f8;
+    --shadow-color: rgba(66, 153, 225, 0.15);
+    --shadow-hover: rgba(66, 153, 225, 0.25);
+    --accent-color: #3182ce;
+    --accent-hover: #2b6cb0;
+    --text-primary: #1a365d;
+    --text-secondary: #2a4a7f;
+    --text-muted: #4a7a9b;
+}
+body.weather-clear .nav-logo span {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-clear .detail-item i,
+body.weather-clear .extra-item i,
+body.weather-clear .forecast-title i {
+    color: #3182ce;
+}
+body.weather-clear .search-btn {
+    background: #3182ce;
+}
+body.weather-clear .search-btn:hover {
+    background: #2b6cb0;
+}
+body.weather-clear .refresh-btn:hover {
+    background: #3182ce;
+    border-color: #3182ce;
+}
+
+/* ===== RAIN ===== */
+body.weather-rain {
+    --bg-primary: #cbd5e0;
+    --bg-secondary: #e2e8f0;
+    --bg-card: #e2e8f0;
+    --weather-card-bg: #e2e8f0;
+    --forecast-bg: #e2e8f0;
+    --detail-bg: #d2dce6;
+    --border-color: #a0aec0;
+    --shadow-color: rgba(74, 85, 104, 0.2);
+    --shadow-hover: rgba(74, 85, 104, 0.35);
+    --accent-color: #4a5568;
+    --accent-hover: #2d3748;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+}
+body.weather-rain .nav-logo span {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-rain .detail-item i,
+body.weather-rain .extra-item i,
+body.weather-rain .forecast-title i {
+    color: #4a5568;
+}
+body.weather-rain .search-btn {
+    background: #4a5568;
+}
+body.weather-rain .search-btn:hover {
+    background: #2d3748;
+}
+body.weather-rain .refresh-btn:hover {
+    background: #4a5568;
+    border-color: #4a5568;
+}
+body.weather-rain .weather-condition {
+    color: #4a5568;
+}
+
+/* ===== CLOUDS ===== */
+body.weather-clouds {
+    --bg-primary: #e2e8f0;
+    --bg-secondary: #edf2f7;
+    --bg-card: #edf2f7;
+    --weather-card-bg: #edf2f7;
+    --forecast-bg: #edf2f7;
+    --detail-bg: #e2e8f0;
+    --border-color: #cbd5e0;
+    --shadow-color: rgba(113, 128, 150, 0.15);
+    --shadow-hover: rgba(113, 128, 150, 0.25);
+    --accent-color: #718096;
+    --accent-hover: #4a5568;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+}
+body.weather-clouds .nav-logo span {
+    background: linear-gradient(135deg, #718096, #4a5568);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-clouds .detail-item i,
+body.weather-clouds .extra-item i,
+body.weather-clouds .forecast-title i {
+    color: #718096;
+}
+body.weather-clouds .search-btn {
+    background: #718096;
+}
+body.weather-clouds .search-btn:hover {
+    background: #4a5568;
+}
+body.weather-clouds .refresh-btn:hover {
+    background: #718096;
+    border-color: #718096;
+}
+
+/* ===== SNOW ===== */
+body.weather-snow {
+    --bg-primary: #f7fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --weather-card-bg: #ffffff;
+    --forecast-bg: #ffffff;
+    --detail-bg: #edf2f7;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.06);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
+    --accent-color: #63b3ed;
+    --accent-hover: #4299e1;
+    --text-primary: #1a202c;
+    --text-secondary: #2d3748;
+    --text-muted: #4a5568;
+}
+body.weather-snow .nav-logo span {
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-snow .detail-item i,
+body.weather-snow .extra-item i,
+body.weather-snow .forecast-title i {
+    color: #63b3ed;
+}
+body.weather-snow .search-btn {
+    background: #63b3ed;
+}
+body.weather-snow .search-btn:hover {
+    background: #4299e1;
+}
+body.weather-snow .refresh-btn:hover {
+    background: #63b3ed;
+    border-color: #63b3ed;
+}
+
+/* ===== THUNDERSTORM ===== */
+body.weather-thunderstorm {
+    --bg-primary: #2d3748;
+    --bg-secondary: #1a202c;
+    --bg-card: #1a202c;
+    --weather-card-bg: #1a202c;
+    --forecast-bg: #1a202c;
+    --detail-bg: #2d3748;
+    --border-color: #4a5568;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-hover: rgba(0, 0, 0, 0.6);
+    --accent-color: #ecc94b;
+    --accent-hover: #d69e2e;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+}
+body.weather-thunderstorm .nav-logo span {
+    background: linear-gradient(135deg, #ecc94b, #d69e2e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-thunderstorm .detail-item i,
+body.weather-thunderstorm .extra-item i,
+body.weather-thunderstorm .forecast-title i {
+    color: #ecc94b;
+}
+body.weather-thunderstorm .search-btn {
+    background: #ecc94b;
+    color: #1a202c;
+}
+body.weather-thunderstorm .search-btn:hover {
+    background: #d69e2e;
+}
+body.weather-thunderstorm .refresh-btn:hover {
+    background: #ecc94b;
+    border-color: #ecc94b;
+    color: #1a202c;
+}
+body.weather-thunderstorm .temperature {
+    color: #f7fafc;
+}
+body.weather-thunderstorm .weather-condition {
+    color: #e2e8f0;
+}
+
+/* ===== MIST / FOG ===== */
+body.weather-mist {
+    --bg-primary: #e2e8f0;
+    --bg-secondary: #edf2f7;
+    --bg-card: #edf2f7;
+    --weather-card-bg: #edf2f7;
+    --forecast-bg: #edf2f7;
+    --detail-bg: #e2e8f0;
+    --border-color: #cbd5e0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --accent-color: #a0aec0;
+    --accent-hover: #718096;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+}
+body.weather-mist .nav-logo span {
+    background: linear-gradient(135deg, #a0aec0, #718096);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+body.weather-mist .detail-item i,
+body.weather-mist .extra-item i,
+body.weather-mist .forecast-title i {
+    color: #a0aec0;
+}
+body.weather-mist .search-btn {
+    background: #a0aec0;
+}
+body.weather-mist .search-btn:hover {
+    background: #718096;
+}
+body.weather-mist .refresh-btn:hover {
+    background: #a0aec0;
+    border-color: #a0aec0;
+}
+
+/* ===== DARK THEME + WEATHER THEME COMBINATIONS ===== */
+body.dark-theme.weather-clear {
+    --bg-primary: #1a365d;
+    --bg-secondary: #2a4a7f;
+    --bg-card: #2a4a7f;
+    --weather-card-bg: #2a4a7f;
+    --forecast-bg: #2a4a7f;
+    --detail-bg: #1a365d;
+    --border-color: #2a4a7f;
+    --text-primary: #ebf8ff;
+    --text-secondary: #bee3f8;
+    --text-muted: #90cdf4;
+    --accent-color: #63b3ed;
+    --accent-hover: #4299e1;
+}
+
+body.dark-theme.weather-rain {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-card: #2d3748;
+    --weather-card-bg: #2d3748;
+    --forecast-bg: #2d3748;
+    --detail-bg: #1a202c;
+    --border-color: #4a5568;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e0;
+    --text-muted: #a0aec0;
+    --accent-color: #a0aec0;
+    --accent-hover: #718096;
+}
+
+body.dark-theme.weather-clouds {
+    --bg-primary: #2d3748;
+    --bg-secondary: #4a5568;
+    --bg-card: #4a5568;
+    --weather-card-bg: #4a5568;
+    --forecast-bg: #4a5568;
+    --detail-bg: #2d3748;
+    --border-color: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent-color: #a0aec0;
+    --accent-hover: #718096;
+}
+
+body.dark-theme.weather-snow {
+    --bg-primary: #2d3748;
+    --bg-secondary: #4a5568;
+    --bg-card: #4a5568;
+    --weather-card-bg: #4a5568;
+    --forecast-bg: #4a5568;
+    --detail-bg: #2d3748;
+    --border-color: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent-color: #63b3ed;
+    --accent-hover: #4299e1;
+}
+
+body.dark-theme.weather-thunderstorm {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-card: #2d3748;
+    --weather-card-bg: #2d3748;
+    --forecast-bg: #2d3748;
+    --detail-bg: #1a202c;
+    --border-color: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent-color: #ecc94b;
+    --accent-hover: #d69e2e;
+}
+
+body.dark-theme.weather-mist {
+    --bg-primary: #2d3748;
+    --bg-secondary: #4a5568;
+    --bg-card: #4a5568;
+    --weather-card-bg: #4a5568;
+    --forecast-bg: #4a5568;
+    --detail-bg: #2d3748;
+    --border-color: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent-color: #a0aec0;
+    --accent-hover: #718096;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Weather-Cast - Live Weather Dashboard" />
+    
+    <title>Weather-Cast | Live Weather Dashboard</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="themes.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>" />
+
+</head>
+<body>
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>Weather-Cast</span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#" id="navForecast">Forecast</a></li>
+                <li><a href="#" id="navHistory">History</a></li>
+                <li><a href="#" id="navSettings">Settings</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="unit-toggle" id="unitToggle" aria-label="Toggle °C / °F">
+                    <span id="unitLabel">°C</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Toast Container -->
+            <div id="toastContainer" class="toast-container"></div>
+
+            <!-- ====== HERO / SEARCH ====== -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Weather-Cast</h1>
+                    <p class="hero-subtitle">Real-time weather intelligence for your location</p>
+                    
+                    <form class="search-form" id="searchForm">
+                        <div class="search-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input 
+                                type="text" 
+                                id="cityInput" 
+                                placeholder="Search for a city..." 
+                                class="search-input"
+                                autocomplete="off"
+                                required
+                            />
+                            <button type="submit" class="search-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <!-- Error Message Below Search -->
+                        <div id="searchError" class="search-error hidden">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="searchErrorMessage">City not found. Please try again.</span>
+                        </div>
+                    </form>
+                    
+                    <button class="geo-btn" id="geoBtn">
+                        <i class="fas fa-location-dot"></i>
+                        Use My Location
+                    </button>
+                </div>
+            </section>
+
+            <!-- ====== WEATHER DISPLAY ====== -->
+            <section class="weather-display" id="weatherDisplay">
+                <!-- Loading Skeleton -->
+                <div class="loading-skeleton" id="loadingSkeleton">
+                    <div class="skeleton-card">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-main">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-temp"></div>
+                        </div>
+                        <div class="skeleton-details">
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Card -->
+                <div class="weather-card" id="weatherCard">
+                    <div class="weather-header">
+                        <div class="city-info">
+                            <h2 id="cityName">--</h2>
+                            <p id="weatherDate">--</p>
+                        </div>
+                        <div class="weather-actions">
+                            <button class="refresh-btn" id="refreshBtn">
+                                <i class="fas fa-rotate"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="weather-main">
+                        <div class="weather-icon-container">
+                            <img id="weatherIcon" src="" alt="Weather icon" />
+                        </div>
+                        <div class="weather-temp-container">
+                            <span class="temperature" id="temperature">--°C</span>
+                            <span class="weather-condition" id="weatherCondition">--</span>
+                        </div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-droplet"></i>
+                            <div>
+                                <span class="detail-label">Humidity</span>
+                                <span class="detail-value" id="humidity">--%</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <span class="detail-label">Wind Speed</span>
+                                <span class="detail-value" id="windSpeed">-- km/h</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-compress"></i>
+                            <div>
+                                <span class="detail-label">Pressure</span>
+                                <span class="detail-value" id="pressure">-- hPa</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <span class="detail-label">Visibility</span>
+                                <span class="detail-value" id="visibility">-- km</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sun"></i>
+                            <div>
+                                <span class="detail-label">UV Index</span>
+                                <span class="detail-value" id="uvIndex">--</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <span class="detail-label">Air Quality</span>
+                                <span class="detail-value" id="airQuality">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="weather-extra">
+                        <div class="extra-item">
+                            <i class="fas fa-temperature-high"></i>
+                            <span>Feels Like: <strong id="feelsLike">--°C</strong></span>
+                        </div>
+                        <div class="extra-item">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>High: <strong id="tempMax">--°C</strong></span>
+                        </div>
+                        <div class="extra-item">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>Low: <strong id="tempMin">--°C</strong></span>
+                        </div>
+                        <div class="extra-item">
+                            <i class="fas fa-sunrise"></i>
+                            <span>Sunrise: <strong id="sunrise">--</strong></span>
+                        </div>
+                        <div class="extra-item">
+                            <i class="fas fa-sunset"></i>
+                            <span>Sunset: <strong id="sunset">--</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error State (Full Page - Only when no data exists) -->
+                <div class="error-state hidden" id="errorState">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3 id="errorTitle">Something went wrong</h3>
+                    <p id="errorMessage">Please try again later.</p>
+                </div>
+            </section>
+
+            <!-- ====== 5-DAY FORECAST ====== -->
+            <section class="forecast-section" id="forecastSection">
+                <h3 class="forecast-title">
+                    <i class="fas fa-calendar-week"></i>
+                    5-Day Forecast
+                </h3>
+                <div class="forecast-grid" id="forecastGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <i class="fas fa-cloud-sun"></i>
+                <span>Weather-Cast</span>
+                <p>&copy; 2026 Weather-Cast. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== JAVASCRIPT ====== -->
+    <script src="script.js"></script>
+</body>
+</html>
