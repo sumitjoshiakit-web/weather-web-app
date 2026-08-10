@@ -1,5 +1,8 @@
 // ===== CONFIGURATION =====
-const API_KEY = 'WRAPED_IN_ENVIRONMENT_VARIABLE';
+const API_BASE = '/api/weather';
+const FORECAST_BASE = '/api/forecast';
+
+const UNITS = 'metric';
 const API_BASE = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
 const UNITS = 'metric';
@@ -151,33 +154,35 @@ function cacheWeatherData(city, weatherData, forecastData = null) {
 // ===== API CALLS =====
 // ============================================================
 async function fetchWeather(city) {
-    const url = `${API_BASE}?q=${encodeURIComponent(city)}&units=${UNITS}&appid=${API_KEY}`;
+    const url = `${API_BASE}?city=${encodeURIComponent(city)}`;
+
     const response = await fetch(url);
-    
+    const raw = await response.json();
+
     if (!response.ok) {
         if (response.status === 404) {
             throw new Error(`City "${city}" not found. Please check the spelling.`);
         } else if (response.status === 401) {
-            throw new Error('Invalid API key. Please check configuration.');
+            throw new Error('Invalid API key. Please check Vercel configuration.');
         } else if (response.status === 429) {
             throw new Error('Too many requests. Please wait a moment.');
         } else {
-            throw new Error(`Server error (${response.status}). Please try again.`);
+            throw new Error(raw.error || `Server error (${response.status})`);
         }
     }
-    
-    const raw = await response.json();
+
     return transformWeatherData(raw);
 }
 
 async function fetchForecastData(city) {
-    const url = `${FORECAST_BASE}?q=${encodeURIComponent(city)}&units=${UNITS}&appid=${API_KEY}`;
+    const url = `${FORECAST_BASE}?city=${encodeURIComponent(city)}`;
+
     const response = await fetch(url);
-    
+
     if (!response.ok) {
         throw new Error('Forecast not available');
     }
-    
+
     return await response.json();
 }
 
@@ -209,10 +214,17 @@ function transformWeatherData(raw) {
 // ===== REVERSE GEOCODING =====
 // ============================================================
 async function reverseGeocode(lat, lon) {
-    const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`;
+    const url =
+        `/api/reverse?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`;
+
     const response = await fetch(url);
-    if (!response.ok) throw new Error('Geocoding failed');
+
+    if (!response.ok) {
+        throw new Error('Geocoding failed');
+    }
+
     const data = await response.json();
+
     return data && data.length > 0 ? data[0].name : null;
 }
 
