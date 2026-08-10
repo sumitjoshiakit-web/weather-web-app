@@ -1,5 +1,5 @@
 // ===== CONFIGURATION =====
-const API_KEY = '61630521f10d3b9e454e725e4e627c28';
+const API_KEY = '8bcbf9bd1c0f85cdd1812e885efcf9d9';
 const API_BASE = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
 const UNITS = 'metric';
