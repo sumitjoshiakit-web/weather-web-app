@@ -1,10 +1,6 @@
-// ===== CONFIGURATION =====
+// ===== CONFIGURATION ====
 const API_BASE = '/api/weather';
 const FORECAST_BASE = '/api/forecast';
-
-const UNITS = 'metric';
-const API_BASE = 'https://api.openweathermap.org/data/2.5/weather';
-const FORECAST_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
 const UNITS = 'metric';
 
 // ===== APP STATE =====
